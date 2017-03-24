@@ -9,10 +9,11 @@
 #SBATCH -A P.hallii_expression
 
 
-module load fastx_toolkit
-module load bwa
-module load launcher
-ml gatk/2.5.2
+ml fastx_toolkit
+ml bwa
+ml picard
+ml samtools
+ml gatk/3.5.0
 
 CMD=$1
 EXECUTABLE=$TACC_LAUNCHER_DIR/init_launcher
