@@ -5,12 +5,24 @@ This is the step by step pile for running GATK to call high quality SNP and it i
 What it expects?
 
 refDir=/work/mypath/taslima/dbs/PH #Reference directory where the reference genome file will be
+
 ref=Phallii_308_v2.0.fa # Name of reference genome file
+
 outDir=/scratch/mypath/taslima/data/phalli/Phal_RILSeq_v2 # output directory. It must be created before running the script
+
 met=/scratch/mypath/taslima/data/phalli/RIL_meta.tab # Full path of meta file
+
 TMP=/scratch/mypath/taslima/data/phalli/Temp
 
 And in outDir/raw all the fastq files will be there
+
+Here is the sample of Meta file that is tab separated with feilds of sample name, library name and barcode
+
+FH.1.06 1       AGBTU   8829.1.113057.GGCTAC
+FH.2.06 1       AGBTB   8829.1.113057.GATCAG
+FH.4.06 1       BHOSB   10980.5.187926.GAGCTCA-TTGAGCT
+FH.5.06 1       BHOSC   10980.5.187926.ATAGCGG-ACCGCTA
+FH.7.06 1       YPGT    8577.7.104714.ACGATA
 
 Step 00: Create Path
 
