@@ -49,13 +49,13 @@ FH.7.06 1       YPGT    8577.7.104714.ACGATA
 I expect the output directory is the top directory that already exists & which already have a directory "RAW_DATA" where all the raw sequense files will be. Othe directories will be created here. So remove anything from there except that "RAW_DATA" folder.Make sure that the files are decompressed. The Structure is like this:
 
  ### outDir:
- 	 -- RAW_DATA
-       -- Renamed
-       -- QualFiltered
-       -- Mapped
-       -- MapFiltered
-       -- AllGATK
-       -- FinalVCF 
+ 	 RAW_DATA
+       Renamed
+       QualFiltered
+       Mapped
+       MapFiltered
+       AllGATK
+       FinalVCF 
 
 
 #### Step 1: Decopress and Rename 
