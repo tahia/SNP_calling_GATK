@@ -14,7 +14,7 @@
 
 Here is the example header of each script which expect followng variables:
 
-**refDir=/work/02786/taslima/dbs/PH #Reference directory where the reference genome file will be **
+__refDir=/work/02786/taslima/dbs/PH #Reference directory where the reference genome file will be __
 
 **ref=PhalliiHAL_496_v2.0.softmasked.fa # Name of reference genome file **
 
