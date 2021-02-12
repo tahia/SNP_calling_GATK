@@ -1,6 +1,6 @@
 # SNP_calling_GATK
 
-This is the step by step pile for running GATK to call high quality SNP and it is designed to run on cluster.
+### This is the step by step pile for running GATK to call high quality SNP and it is designed to run on cluster.
 
 ## This script is a part of genome-wide SNP Calling Pipeline for Plants by implementing Genome Analysis Toolkit (GATK)    
 ## For further information about GATK please visit : https://gatk.broadinstitute.org/hc/en-us                             
