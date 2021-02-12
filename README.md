@@ -50,12 +50,12 @@ I expect the output directory is the top directory that already exists & which a
 
  ### outDir:
  	      RAW_DATA
-       Renamed
-       QualFiltered
-       Mapped
-       MapFiltered
-       AllGATK
-       FinalVCF 
+            Renamed
+            QualFiltered
+            Mapped
+            MapFiltered
+            AllGATK
+            FinalVCF 
 
 
 #### Step 1: Decopress and Rename 
