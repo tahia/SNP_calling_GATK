@@ -14,17 +14,17 @@
 
 Here is the example header of each script which expect followng variables:
 
-** refDir=/work/02786/taslima/dbs/PH #Reference directory where the reference genome file will be **
+#### refDir=/work/02786/taslima/dbs/PH #Reference directory where the reference genome file will be 
 
-**ref=PhalliiHAL_496_v2.0.softmasked.fa # Name of reference genome file **
+#### ref=PhalliiHAL_496_v2.0.softmasked.fa # Name of reference genome file 
 
-**outDir=/scratch/02786/taslima/data/PHNATAcc/Analysis/V3 # output directory. It must be created before running the script **
+#### outDir=/scratch/02786/taslima/data/PHNATAcc/Analysis/V3 # output directory. It must be created before running the script 
 
-**met=/work/02786/taslima/stampede2/pipes/SNP_calling_GATK/JGI_DL_78_Design.tab # Full path of meta file **
+#### met=/work/02786/taslima/stampede2/pipes/SNP_calling_GATK/JGI_DL_78_Design.tab # Full path of meta file 
 
-**TMP=/scratch/02786/taslima/data/phalli/Temp **
+#### TMP=/scratch/02786/taslima/data/phalli/Temp 
 
-**CHRFIL=/work/02786/taslima/stampede2/dbs/PH/PhalliiHAL_496_v2.0.chr #Name of Chromosomes one in each line **
+#### CHRFIL=/work/02786/taslima/stampede2/dbs/PH/PhalliiHAL_496_v2.0.chr #Name of Chromosomes one in each line 
 
 
 And in outDir/RAW_DATA all the fastq files will be there
