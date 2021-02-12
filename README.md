@@ -2,14 +2,12 @@
 
 This is the step by step pile for running GATK to call high quality SNP and it is designed to run on cluster.
 
-##########################################################################################################################
-# This script is a part of genome-wide SNP Calling Pipeline for Plants by implementing Genome Analysis Toolkit (GATK)    #
-# For further information about GATK please visit : https://gatk.broadinstitute.org/hc/en-us                             #
-# Detail description of this pipe can be found in github: https://github.com/tahia/SNP_calling_GATK                      #
-# Author : Taslima Haque                                                                                                 #
-# Last modified: 12th Feb,2021                                                                                           #
-# Please send your query to the author at: taslima@utexas.edu or tahiadu@gmail.com                                       #
-##########################################################################################################################
+# This script is a part of genome-wide SNP Calling Pipeline for Plants by implementing Genome Analysis Toolkit (GATK)    
+# For further information about GATK please visit : https://gatk.broadinstitute.org/hc/en-us                             
+# Detail description of this pipe can be found in github: https://github.com/tahia/SNP_calling_GATK                      
+# Author : Taslima Haque                                                                                                 
+# Last modified: 12th Feb,2021                                                                                           
+# Please send your query to the author at: taslima@utexas.edu or tahiadu@gmail.com                                       
 
 What it expects?
 
