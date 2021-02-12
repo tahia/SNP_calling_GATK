@@ -35,11 +35,11 @@ And in outDir/RAW_DATA all the fastq files will be there
 
 Here is the sample of Meta file that is tab separated with feilds of sample name, library name and barcode
 
-FH.1.06 1       AGBTU   8829.1.113057.GGCTAC
-FH.2.06 1       AGBTB   8829.1.113057.GATCAG
-FH.4.06 1       BHOSB   10980.5.187926.GAGCTCA-TTGAGCT
-FH.5.06 1       BHOSC   10980.5.187926.ATAGCGG-ACCGCTA
-FH.7.06 1       YPGT    8577.7.104714.ACGATA
+-FH.1.06 1       AGBTU   8829.1.113057.GGCTAC
+-FH.2.06 1       AGBTB   8829.1.113057.GATCAG
+-FH.4.06 1       BHOSB   10980.5.187926.GAGCTCA-TTGAGCT
+-FH.5.06 1       BHOSC   10980.5.187926.ATAGCGG-ACCGCTA
+-FH.7.06 1       YPGT    8577.7.104714.ACGATA
 
 ### Tools requried:
       -- fastx_toolkit
