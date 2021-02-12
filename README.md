@@ -9,7 +9,10 @@
 ### Last modified: 12th Feb,2021                                                                                           
 ### Please send your query to the author at: taslima@utexas.edu or tahiadu@gmail.com                                       
 
-What it expects?
+
+#### What it expects?
+
+Here is the example header of each script which expect followng variables
 
 refDir=/work/02786/taslima/dbs/PH #Reference directory where the reference genome file will be
 
