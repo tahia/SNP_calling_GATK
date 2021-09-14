@@ -43,17 +43,18 @@ LC_ALL=C
 
 if [ -e baserecal.param ]; then rm baserecal.param; fi
 if [ -e baserecalbam.param ]; then rm baserecalbam.param; fi
-for f in `ls $outDir/FinalVCF/*_merge_vcf.vcf`
+for f in `ls $outDir/FinalVCF/*postfilterSNP.vcf`
 do
     BASE=$(basename $f)
-    NAME=${BASE%_merge_vcf.vcf}
+    NAME=${BASE%postfilterSNP.vcf}
     OFIL2="${outDir}/FinalVCF/${NAME}.BSQR.table"
     OFIL3="${outDir}/FinalVCF/${NAME}_BSQR.bam"
+    IBAM="${outDir}/FinalVCF/${NAME}_GATK.bam"
 #### need to fix this --filterExpression \"(MQ >= 4) && ((MQ / (1.0 * DP)) > 0.10)\" --filterName \"HARD_TO_VALIDATE\"
     echo "java -jar -Xmx24G /home1/02786/taslima/GenomeAnalysisTK-3.8-1-0-gf15c1c3ef/GenomeAnalysisTK.jar -T BaseRecalibrator \
  -knownSites $f -o $OFIL2 -nct 4 " >>baserecal.param
     echo "java -jar -Xmx24G /home1/02786/taslima/GenomeAnalysisTK-3.8-1-0-gf15c1c3ef/GenomeAnalysisTK.jar -T PrintReads \
-    -R $refDir/$ref -BQSR $OFIL2 -o $OFIL3 -nct 4" >baserecalbam.param
+    -I $IBAM -R $refDir/$ref -recalFile $OFIL2 -o $OFIL3 -nct 4" >baserecalbam.param
 done
 
 Core=`wc -l baserecal.param  |cut -f1 -d ' '`

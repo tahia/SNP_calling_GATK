@@ -39,7 +39,7 @@ LC_ALL=C
 ################################################ Step 17: FILTER VCF ##############################################
 
 if [ -e filterSNP.param ]; then rm filterSNP.param; fi
-if [ -e grepSNPfilter.param ]; then rm grepSNPfilter.param; fi
+if [ -e filterSel.param ]; then rm filterSel.param; fi
 for f in `ls $outDir/FinalVCF/*_merge_vcf.vcf`
 do
     BASE=$(basename $f)
