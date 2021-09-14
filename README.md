@@ -118,6 +118,6 @@ I expect the output directory is the top directory that already exists & which a
 
 #### Step 17: FILTER VCF
 
-##### Step 18: Base Quality Recalibration
+#### Step 18: Base Quality Recalibration
 
-##### Step 19 : Repeat variant callig using HC
+#### Step 19 : Repeat variant callig using HC
