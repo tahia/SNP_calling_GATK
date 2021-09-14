@@ -27,12 +27,12 @@ LC_ALL=C
 
 if [ -e decomp.param ]; then rm decomp.param; fi
 
-if [ ! -d $LOG ]; then 
+if [ ! -d $LOG ]; then
     echo "Log directory doesn't exist. Making $LOG"
     mkdir $LOG
 fi
 
-for f in `ls /scratch/02786/taslima/data/PHNATAcc/V3/Raw_Data/*.gz`
+for f in `ls /scratch/02786/taslima/data/PHNATAcc/Raw_Data/*.gz`
 do
     #BASE=$(basename $f)
     #NAME=${BASE%.gz}
@@ -52,4 +52,3 @@ fi
 #echo $Node
 ## Change time (-t) and partition (-p) as per your need and in slurm file change your allocation name
 sbatch -J decomp -N $Node -n $Core --ntasks-per-node=45 -p development -t 02:00:00 slurm.sh decomp.param
-

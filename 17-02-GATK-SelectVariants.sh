@@ -36,30 +36,8 @@ LC_ALL=C
 
 ############### !!!!!! Make sure you are using the same version of GATK for the total pipe !!!! #####################
 
-################################################ Step 17: FILTER VCF ##############################################
 
-if [ -e filterSNP.param ]; then rm filterSNP.param; fi
-if [ -e grepSNPfilter.param ]; then rm grepSNPfilter.param; fi
-for f in `ls $outDir/FinalVCF/*_merge_vcf.vcf`
-do
-    BASE=$(basename $f)
-    NAME=${BASE%_merge_vcf.vcf} #change this if you did merge over genomic intervals
-    OFIL2="${outDir}/FinalVCF/${NAME}.prefilterSNP.vcf"
-    OFIL3="${outDir}/FinalVCF/${NAME}.postfilterSNP.vcf"
-#### need to fix this --filterExpression \"(MQ >= 4) && ((MQ / (1.0 * DP)) > 0.10)\" --filterName \"HARD_TO_VALIDATE\"
-    echo "java -jar -Xmx24G -XX:PermSize=1g -XX:MaxPermSize=2g \$TACC_GATK_DIR/GenomeAnalysisTK.jar -T VariantFiltration \
- --variant $f -R $refDir/$ref -o $OFIL2 --filterExpression \"QD < 2.0\" --filterName \"LowQD\" \
- --filterExpression \"MQ < 51.0\" --filterName \"low_MQ\" --filterExpression \"MQ > 61.0\" --filterName \"MQ_tooHigh\" \
- --filterExpression \"FS > 60.0\" --filterName \"HighStrandBias\" --filterExpression \"DP < 5\" --filterName \"low_COV\" \
---filterExpression \"DP > 100\" --filterName \"COV_TooHigh\" --filterExpression \"HaplotypeScore > 13.0\" --filterName \"failed_HaplotypeScore\" \
---filterExpression \"QUAL < 50.0\" --filterName \"Low_Quality\" --filterExpression \"MQRankSum < -12.5\" --filterName \"failed_MQRankSum\" \
---filterExpression \"ReadPosRankSum < -8.0\" --filterName \"failed_ReadPosRankSum\" --filterExpression \"SB > -10.0\" \
---filterName \"failed_StrandBias\" \
---genotypeFilterExpression \"GQ < 25\" --genotypeFilterName \"GQ_LT_25\" " >>filterSNP.param
-    #echo "grep \"PASS\" $OFIL2 | grep -v \"GQ_LT_25\" | grep -v \"^##\" >$OFIL3 " >grepSNPfilter.param
-    echo "java -jar -Xmx2G -XX:PermSize=1g -XX:MaxPermSize=2g /home1/02786/taslima/GenomeAnalysisTK-3.8-1-0-gf15c1c3ef/GenomeAnalysisTK.jar -T  SelectVariants \
---variant $OFIL2 -R $refDir/$ref --excludeFiltered -o $OFIL3" >>filterSel.param
-done
+####################################### Step 17: Select filtered Variants ######################################################
 
 Core=`wc -l filterSNP.param  |cut -f1 -d ' '`
 if (( $Core % 12 == 0)); then Node="$(($Core/12))";
@@ -67,5 +45,4 @@ if (( $Core % 12 == 0)); then Node="$(($Core/12))";
 fi
 
 
-## Change time (-t) and partition (-p) as per your need and in slurm file change your allocation name
-sbatch -J prefiltersnp -N $Node -n $Core -p normal -t 24:00:00 slurm.sh filterSNP.param
+sbatch -J selectvar -N $Node -n $Core -p normal -t 12:00:00 slurm.sh filterSel.param
