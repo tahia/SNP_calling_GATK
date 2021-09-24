@@ -6,7 +6,7 @@
 #### For further information about GATK please visit : https://gatk.broadinstitute.org/hc/en-us                             
 #### Detail description of this pipe can be found in github: https://github.com/tahia/SNP_calling_GATK                      
 #### Author : Taslima Haque                                                                                                 
-#### Last modified: 12th Feb,2021                                                                                           
+#### Last modified: 13th Sept,2021                                                                                           
 #### Please send your query to the author at: taslima@utexas.edu or tahiadu@gmail.com                                       
 
 
