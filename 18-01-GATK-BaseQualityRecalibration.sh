@@ -52,7 +52,7 @@ do
     IBAM="${outDir}/FinalVCF/${NAME}_GATK.bam"
 #### need to fix this --filterExpression \"(MQ >= 4) && ((MQ / (1.0 * DP)) > 0.10)\" --filterName \"HARD_TO_VALIDATE\"
     echo "java -jar -Xmx24G /home1/02786/taslima/GenomeAnalysisTK-3.8-1-0-gf15c1c3ef/GenomeAnalysisTK.jar -T BaseRecalibrator \
- -knownSites $f -o $OFIL2 -nct 4 " >>baserecal.param
+ -I $IBAM -R $refDir/$ref -knownSites $f -o $OFIL2 -nct 4 " >>baserecal.param
     echo "java -jar -Xmx24G /home1/02786/taslima/GenomeAnalysisTK-3.8-1-0-gf15c1c3ef/GenomeAnalysisTK.jar -T PrintReads \
     -I $IBAM -R $refDir/$ref -recalFile $OFIL2 -o $OFIL3 -nct 4" >baserecalbam.param
 done
