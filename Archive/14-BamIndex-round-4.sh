@@ -1,9 +1,18 @@
+##########################################################################################################################
+# This script is a part of genome-wide SNP Calling Pipeline for Plants by implementing Genome Analysis Toolkit (GATK)    #
+# For further information about GATK please visit : https://gatk.broadinstitute.org/hc/en-us                             #
+# Detail description of this pipe can be found in github: https://github.com/tahia/SNP_calling_GATK                      #
+# Author : Taslima Haque                                                                                                 #
+# Last modified: 12th Feb,2021                                                                                           #
+# Please send your query to the author at: taslima@utexas.edu or tahiadu@gmail.com                                       #
+##########################################################################################################################
+
 ############################################# Head of all Scripts ####################################
 # The following directories and files are expected to run for SNP calling
 refDir=/work/02786/taslima/dbs/PH #Reference directory where the reference genome file will be
 ref=Phallii_308_v2.0.fa # Name of reference genome file
 outDir=/scratch/02786/taslima/data/phalli/Phal_RILSeq_v2 # output directory. It must be created before running the script
-met=/scratch/02786/taslima/data/phalli/RIL_meta.tab # Full path of meta file
+met=/work/02786/taslima/stampede2/pipes/SNP_calling_GATK/JGI_DL_78_Design.tab # Full path of meta file
 TMP=/scratch/02786/taslima/data/phalli/Temp
 
 # Sample of meta file, ignore the "#" before each line. you can use any kind of tab delim file and change Step 1 accordingly.
@@ -23,11 +32,11 @@ ml gatk/3.5.0
 LC_ALL=C
 
 ############### !!!!!! Make sure you are using the same version of GATK for the total pipe !!!! #####################
-########################################## Step 12: RUN BAM INDEX : Round 3 ###########################################
+########################################## Step 14: RUN BAM INDEX : Round 4 ###########################################
 #run it into two slot
 #wc -l bam-index-3.param 
 #5076 bam-index-3.param
-split -l 2578 --additional-suffix=bam-index-4.param bam-index-3.param 
+split -l 2578 --additional-suffix=bam-index-4.param bam-index-4.param 
 
 #
 Core=`wc -l xaabam-index-4.param  |cut -f1 -d ' '`

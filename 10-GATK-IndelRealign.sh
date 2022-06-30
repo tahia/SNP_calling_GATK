@@ -1,10 +1,13 @@
 ############################################# Head of all Scripts ####################################
 # The following directories and files are expected to run for SNP calling
 refDir=/work/02786/taslima/dbs/PH #Reference directory where the reference genome file will be
-ref=Phallii_308_v2.0.fa # Name of reference genome file
-outDir=/scratch/02786/taslima/data/phalli/Phal_RILSeq_v2 # output directory. It must be created before running the script
+ref=PhalliiHAL_496_v2.0.softmasked.fa # Name of reference genome file
+outDir=/scratch/02786/taslima/data/PHNATAcc/Analysis/V6 # output directory. It must be created before running the script
 met=/scratch/02786/taslima/data/phalli/RIL_meta.tab # Full path of meta file
 TMP=/scratch/02786/taslima/data/phalli/Temp
+
+CHRFIL=/work/02786/taslima/stampede2/dbs/PH/PhalliiHAL_496_v2.0.chr
+
 
 # Sample of meta file, ignore the "#" before each line. you can use any kind of tab delim file and change Step 1 accordingly.
 #FH.1.06 1       AGBTU   8829.1.113057.GGCTAC
@@ -19,33 +22,41 @@ ml fastx_toolkit
 ml bwa
 ml picard
 ml samtools
-ml gatk/3.5.0
+ml gatk/3.8.0
 LC_ALL=C
 
 ############### !!!!!! Make sure you are using the same version of GATK for the total pipe !!!! #####################
-########################################## Step 12: RUN BAM INDEX : Round 3 ###########################################
-#run it into two slot
-#wc -l bam-index-3.param 
-#5076 bam-index-3.param
-split -l 2578 --additional-suffix=bam-index-4.param bam-index-3.param 
+
+################################### Step 10: GATK IndelRealigner ################################
+# After target is finished run IndelRealigner
+
+#Core=`wc -l realgn.param  |cut -f1 -d ' '`
+#if (( $Core % 16 == 0)); then Node="$(($Core/16))";
+#        else  Node="$((($Core/16)+1))";
+#fi
+
+
+## Change time (-t) and partition (-p) as per your need and in slurm file change your allocation name
+#sbatch -J realign -N $Node -n $Core -p normal -t 48:00:00 slurm.sh realgn.param
+
+split -l 522 --additional-suffix=realgn.param realgn.param 
 
 #
-Core=`wc -l xaabam-index-4.param  |cut -f1 -d ' '`
+Core=`wc -l xaarealgn.param  |cut -f1 -d ' '`
 if (( $Core % 16 == 0)); then Node="$(($Core/16))";
         else  Node="$((($Core/16)+1))";
 fi
 
 ## Change time (-t) and partition (-p) as per your need and in slurm file change your allocation name
-sbatch -J bamindex -N $Node -n $Core -p normal -t 01:00:00 --ntasks-per-node=16 slurm.sh xaabam-index-4.param
+sbatch -J target -N $Node -n $Core -p normal -t 48:00:00 --ntasks-per-node=16 slurm.sh xaarealgn.param
 
 
 #
-Core=`wc -l xabbam-index-4.param  |cut -f1 -d ' '`
+Core=`wc -l xabrealgn.param  |cut -f1 -d ' '`
 if (( $Core % 16 == 0)); then Node="$(($Core/16))";
         else  Node="$((($Core/16)+1))";
 fi
 
 ## Change time (-t) and partition (-p) as per your need and in slurm file change your allocation name
-sbatch -J bamindex -N $Node -n $Core -p normal -t 01:00:00 --ntasks-per-node=16 slurm.sh xabbam-index-4.param
-
+sbatch -J target -N $Node -n $Core -p normal -t 48:00:00 --ntasks-per-node=16 slurm.sh xabrealgn.param
 

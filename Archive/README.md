@@ -6,7 +6,7 @@
 #### For further information about GATK please visit : https://gatk.broadinstitute.org/hc/en-us                             
 #### Detail description of this pipe can be found in github: https://github.com/tahia/SNP_calling_GATK                      
 #### Author : Taslima Haque                                                                                                 
-#### Last modified: 30th June,2022                                                                                           
+#### Last modified: 13th Sept,2021                                                                                           
 #### Please send your query to the author at: taslima@utexas.edu or tahiadu@gmail.com                                       
 
 
@@ -22,11 +22,14 @@ refDir=/work/02786/taslima/dbs/PH #Reference directory where the reference genom
 
 ref=PhalliiHAL_496_v2.0.softmasked.fa # Name of reference genome file
 
-outDir=/scratch/02786/taslima/data/PHNATAcc/Analysis/V7 # output directory. It must be created before running the script
+outDir=/scratch/02786/taslima/data/PHNATAcc/Analysis/V3 # output directory. It must be created before running the script
 
-met=/scratch/02786/taslima/data/phalli/RIL_meta.tab # Full path of meta file
+met=/work/02786/taslima/stampede2/pipes/SNP_calling_GATK/JGI_DL_78_Design.tab # Full path of meta file
 
 TMP=/scratch/02786/taslima/data/phalli/Temp
+
+CHRFIL=/work/02786/taslima/stampede2/dbs/PH/PhalliiHAL_496_v2.0.chr #Name of Chromosomes one in each line
+
 ```
 
 
@@ -89,28 +92,32 @@ I expect the output directory is the top directory that already exists & which a
 
 #### Step 8: RUN BAM INDEX : ROUND 2
 
-#### Step 9: GATK RealignerTargetCreator
+#### Step 9: Split BAM by Chromosome
+
+#### Step 10: RUN BAM INDEX : ROUND 3
+
+#### Step 11: GATK RealignerTargetCreator
 
  First step for GATK. It will list the target intervals for variants
 
-#### Step 10: GATK IndelRealigner
+#### Step 12: GATK IndelRealigner
 
  Will realign in the region of Indel and how we want the SNP variants there.
 
-#### Step 11: PICARD RESORT
+#### Step 13: PICARD RESORT
 
-#### Step 12: RUN BAM INDEX : Round 4
+#### Step 14: RUN BAM INDEX : Round 4
 
-#### Step 13: RUN GATK to call raw CALL SNP
+#### Step 15: RUN GATK to call raw CALL SNP
 
  You can use either HaplotypeCaller (HC) or UnifiedGenotyper (UG). UG has more miscall for heterozygous alleles so I personally prefer HC.
 
-### Step 14: RUN BAM INDEX & FILTER SNP, INDEL : ROUND 3
+#### Step 16: MERGE VCF
 
-#### Step 15: Base Quality Recalibration
+ This step is needed if SNP calling has done across Chromsomes parallelly or using specific Intervals
 
-#### Step 16 & 17 : Repeat variant calling
+#### Step 17: FILTER VCF
 
-#### Step 18 & 19 : Filter variants : Round 2
+#### Step 18: Base Quality Recalibration
 
-#### Step 20 : Filter non-variant sites
+#### Step 19 : Repeat variant callig using HC
