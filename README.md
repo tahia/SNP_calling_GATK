@@ -105,7 +105,7 @@ I expect the output directory is the top directory that already exists & which a
 
  You can use either HaplotypeCaller (HC) or UnifiedGenotyper (UG). UG has more miscall for heterozygous alleles so I personally prefer HC.
 
-### Step 14: RUN BAM INDEX & FILTER SNP, INDEL : ROUND 3
+#### Step 14: RUN BAM INDEX & FILTER SNP, INDEL : ROUND 3
 
 #### Step 15: Base Quality Recalibration
 
